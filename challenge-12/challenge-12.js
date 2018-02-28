@@ -75,7 +75,6 @@ no formato abaixo:
 // ?
 
 /*
-Crie um array chamado `myName`. Cada item desse array deve ser uma letra do
 seu nome. Adicione seu nome completo no array.
 */
 // ?
