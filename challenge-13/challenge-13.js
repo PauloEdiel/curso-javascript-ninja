@@ -24,7 +24,7 @@ Crie uma variável chamada `brasil`, que irá receber as duas regiões
 concatenadas. Mostre o `brasil` no console.
 */
         var brasil = sul.concat(suldeste);
-        console.log('\nAlguns Estados do Brasil:');
+        console.log('Alguns Estados do Brasil:');
         console.log(brasil);
         // ?
 
