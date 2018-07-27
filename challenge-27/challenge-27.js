@@ -19,3 +19,12 @@ Crie os seguintes métodos para verificação de tipo:
 - isArray, isObject, isFunction, isNumber, isString, isBoolean, isNull.
 O método isNull deve retornar `true` se o valor for null ou undefined.
 */
+
+var a = new DOM('[data-js="link"]');
+$a.on('click', function(e){
+	e.preventDefault();
+	console.log('Clicou');
+});
+
+console.log('Elementos selecionados', $a.get());
+console.log('$a é filho  de body: ', $a.get()[0].parentNode === document.body);

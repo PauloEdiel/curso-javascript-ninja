@@ -25,3 +25,27 @@
   - Utilize a lib DOM criada anteriormente para facilitar a manipulação e
   adicionar as informações em tela.
   */
+  (function(){
+    'use strict';
+
+    function DOM(elements) {
+      this.element = document.querySelectAll(elements);
+    }
+
+    DOM.prototype.on = function on(eventType, callback) {
+      Array.prototype.forEach.call(this.element, function(element) {
+        element.addEventListener(eventType, callback, false);
+
+      });
+    };
+
+    DOM.prototype.off = function(eventType, callback) {
+      Array.prototype.forEach.call(this.element, function(element) {
+        element.removeEventListener(eventType, callback, false);
+
+      });
+    };
+
+
+
+  }());
