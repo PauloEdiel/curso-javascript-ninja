@@ -32,7 +32,7 @@
     
   };
 
-  DOM.prototype.off = function(eventType, callback) {
+  DOM.prototype.off = function(eventType, callback ) {
     Array.prototype.forEach.call(this.element, function(element) {
       element.removeEventListener(eventType, callback, false);
     });

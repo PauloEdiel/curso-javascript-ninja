@@ -1,3 +1,5 @@
+(function(doc,win) {
+	'use strict';
 /*
 Aproveitando a lib DOM que fizemos na semana anterior, crie agora para ela
 métodos semelhantes aos que existem no array, mas que sirvam para os
@@ -19,12 +21,76 @@ Crie os seguintes métodos para verificação de tipo:
 - isArray, isObject, isFunction, isNumber, isString, isBoolean, isNull.
 O método isNull deve retornar `true` se o valor for null ou undefined.
 */
+function DOM(elements) {
+	this.element = doc.querySelectorAll(elements);
+} 
 
-var a = new DOM('[data-js="link"]');
-$a.on('click', function(e){
-	e.preventDefault();
-	console.log('Clicou');
-});
+DOM.prototype.on = function(eventType,callback) {
+	Array.prototype.forEach.call(this.element, function(element) {
+		element.addEventListener(eventType, callback, false);
+	});
 
-console.log('Elementos selecionados', $a.get());
-console.log('$a é filho  de body: ', $a.get()[0].parentNode === document.body);
+};
+
+DOM.prototype.off = function(eventType, callback ) {
+	Array.prototype.forEach.call(this.element, function(element) {
+		element.removeEventListener(eventType, callback, false);
+	});
+};
+
+DOM.prototype.get = function() {
+	return this.element;
+};
+
+DOM.prototype.forEach = function forEach() {
+	return Array.prototype.forEach.apply( this.element, arguments);
+};
+
+DOM.prototype.map = function map() {
+	return Array.prototype.map.apply( this.element, arguments);
+};
+
+DOM.prototype.filter = function filter() {
+	return Array.prototype.filter.apply( this.element, arguments);
+};
+
+DOM.prototype.reduce = function reduce() {
+	return Array.prototype.reduce.apply( this.element, arguments);
+};
+
+DOM.prototype.reduceRight = function reduceRight() {
+	return Array.prototype.reduceRight.apply( this.element, arguments);
+};
+
+DOM.prototype.every = function every() {
+	return Array.prototype.every.apply( this.element, arguments);
+};
+
+DOM.prototype.some = function some() {
+	return Array.prototype.some.apply( this.element, arguments);
+};
+
+DOM.prototype.isArray = function isArray( param ) {
+	return Object.prototype.toString.call( param ) === '[object Array]';
+};
+
+DOM.prototype.isFunction = function isFunction( param ) {
+	return Object.prototype.toString.call( param ) === '[object Function]';
+};
+
+DOM.prototype.isString = function isString( param ) {
+	return Object.prototype.toString.call( param ) === '[object String]';
+};
+
+DOM.prototype.isBoolean = function isBoolean( param ) {
+	return Object.prototype.toString.call( param ) === '[object Boolean]';
+};
+
+DOM.prototype.isNull = function isNull( param ) {
+	return Object.prototype.toString.call( param ) === '[object Null]'
+	||	Object.prototype.toString.call(param) == '[Object undefined]';
+	;
+};
+
+console.log( DOM.prototype.isArray( [1, 2, 3]) );
+})(document,window);
